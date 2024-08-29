@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Home" />
+        android:title="Home"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/search"
+        android:id="@+id/respect"
         android:icon="@drawable/abstract_shape"
-        android:title="Search" />
+        android:title="@string/respect"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/profile"
+        android:id="@+id/kindness"
         android:icon="@drawable/abstract_shape3"
-        android:title="Profile" />
+        android:title="@string/kindness"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/four"
+        android:id="@+id/optimism"
         android:icon="@drawable/abstract_shape2"
-        android:title="4" />
+        android:title="@string/optimism"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/five"
+        android:id="@+id/happiness"
         android:icon="@drawable/abstract_shape1"
-        android:title="5" />
+        android:title="@string/happiness"
+        app:showAsAction="ifRoom" />
 
 </menu>
