@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SwitchApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="optimism_fragment">Optimism Fragment</string>
+    <string name="kindness_fragment">Kindness Fragment</string>
+    <string name="happiness_fragment">Happiness Fragment</string>
+    <string name="giving_fragment">Giving Fragment</string>
+    <string name="respect_fragment">Respect Fragment</string>
+    <string name="happiness">Happiness</string>
+    <string name="optimism">Optimism</string>
+    <string name="kindness">Kindness</string>
+    <string name="respect">Respect</string>
+    <string name="giving">Giving</string>
+    <string name="ego">Ego</string>
 </resources>

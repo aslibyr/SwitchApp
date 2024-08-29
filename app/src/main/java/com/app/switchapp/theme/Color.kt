@@ -1,4 +1,4 @@
-package com.app.switchapp.ui.theme
+package com.app.switchapp.theme
 
 import androidx.compose.ui.graphics.Color
 

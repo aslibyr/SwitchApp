@@ -1,4 +1,4 @@
-package com.app.switchapp.ui.theme
+package com.app.switchapp.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

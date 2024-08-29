@@ -1,3 +1,5 @@
+package com.app.switchapp.presentation
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,9 +48,9 @@ class MainFragment : Fragment() {
         switchList.drop(1).forEach { switch ->
             switch.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    (activity as MainActivity).addItemToBottomNav(switch.text.toString())
+                    (activity as MainActivity)
                 } else {
-                    (activity as MainActivity).removeItemFromBottomNav(switch.text.toString())
+                    (activity as MainActivity)
                 }
             }
         }

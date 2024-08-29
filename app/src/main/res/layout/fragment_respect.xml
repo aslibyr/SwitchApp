@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.theme.RespectFragment">
+    tools:context=".presentation.RespectFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:text="@string/respect_fragment" />
+        android:text="@string/respect_fragment" />
 
 </FrameLayout>

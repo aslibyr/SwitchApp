@@ -1,4 +1,4 @@
-package com.app.switchapp.ui.theme
+package com.app.switchapp.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

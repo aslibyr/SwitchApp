@@ -1,4 +1,4 @@
-package com.app.switchapp.ui.theme
+package com.app.switchapp.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.app.switchapp.R
 
 
-class RespectFragment : Fragment() {
+class GivingFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,6 @@ class RespectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_respect, container, false)
+        return inflater.inflate(R.layout.fragment_giving, container, false)
     }
-
 }
