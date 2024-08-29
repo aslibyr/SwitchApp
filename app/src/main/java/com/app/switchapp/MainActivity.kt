@@ -1,47 +1,55 @@
 package com.app.switchapp
 
+import MainFragment
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.app.switchapp.ui.theme.SwitchAppTheme
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.app.switchapp.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private val menuItems = mutableListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            SwitchAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val bottomNavView: BottomNavigationView = binding.bottomNavigationView
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, MainFragment())
+            .commit()
+
+    }
+
+
+    fun showBottomNavigation() {
+        binding.bottomNavigationView.visibility = View.VISIBLE
+    }
+
+    fun hideBottomNavigation() {
+        binding.bottomNavigationView.visibility = View.GONE
+    }
+
+    fun addItemToBottomNav(title: String) {
+        if (menuItems.size < 4) {
+            menuItems.add(title)
+            updateBottomNav()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    fun removeItemFromBottomNav(title: String) {
+        menuItems.remove(title)
+        updateBottomNav()
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SwitchAppTheme {
-        Greeting("Android")
+    private fun updateBottomNav() {
+        binding.bottomNavigationView.menu.clear()
+        menuItems.forEachIndexed { index, item ->
+            binding.bottomNavigationView.menu.add(0, index, 0, item)
+        }
     }
 }
