@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.app.switchapp.MainActivity
 import com.app.switchapp.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainBinding // ViewBinding kullanıyoruz
+    private lateinit var binding: FragmentMainBinding
     private val switchList = mutableListOf<Switch>()
+
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,24 +37,37 @@ class MainFragment : Fragment() {
     }
 
     private fun setupSwitches() {
-        binding.switchEgo.isChecked = true
-        updateSwitchesState(binding.switchEgo.isChecked)
-
-        binding.switchEgo.setOnCheckedChangeListener { buttonView, isChecked ->
+        viewModel.isEgoChecked.observe(viewLifecycleOwner, Observer { isChecked ->
+            binding.switchEgo.isChecked = isChecked
             updateSwitchesState(isChecked)
-            if (!isChecked) {
-                (activity as MainActivity).hideBottomNavigation()
-            } else {
+        })
+
+        viewModel.isBottomNavVisible.observe(viewLifecycleOwner, Observer { isVisible ->
+            if (isVisible) {
                 (activity as MainActivity).showBottomNavigation()
+            } else {
+                (activity as MainActivity).hideBottomNavigation()
             }
+        })
+
+        viewModel.switchStates.observe(viewLifecycleOwner, Observer { switchStates ->
+            switchStates.forEach { (switchName, isChecked) ->
+                val switch = switchList.find { it.text.toString() == switchName }
+                switch?.isChecked = isChecked
+            }
+        })
+
+        binding.switchEgo.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setEgoChecked(isChecked)
         }
 
         switchList.drop(1).forEach { switch ->
-            switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            switch.setOnCheckedChangeListener { _, isChecked ->
+                viewModel.updateSwitchState(switch.text.toString(), isChecked)
                 if (isChecked) {
-                    (activity as MainActivity)
+                    (activity as MainActivity).addItemToBottomNav(switch.text.toString())
                 } else {
-                    (activity as MainActivity)
+                    (activity as MainActivity).removeItemFromBottomNav(switch.text.toString())
                 }
             }
         }
