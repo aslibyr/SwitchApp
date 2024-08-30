@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#F6A8FF" android:state_checked="true" android:state_enabled="true" />
+
+    <!-- Switch enabled and unchecked -->
+    <item android:color="#FFFFFF" android:state_checked="false" android:state_enabled="true" />
+
+    <!-- Switch disabled and checked -->
+    <item android:color="#85F6A8FF" android:state_checked="true" android:state_enabled="false" />
+
+    <!-- Switch disabled and unchecked -->
+    <item android:color="#8CFFFFFF" android:state_checked="false" android:state_enabled="false" />
+</selector>

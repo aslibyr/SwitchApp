@@ -22,7 +22,7 @@
             android:paddingTop="16dp"
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:text="@string/ego" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -31,7 +31,7 @@
             android:paddingTop="16dp"
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:text="@string/giving" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -40,7 +40,7 @@
             android:paddingTop="16dp"
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:text="@string/respect" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
             android:paddingTop="16dp"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:text="@string/kindness" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:paddingTop="16dp"
             android:text="@string/optimism" />
 
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@drawable/main_selector"
-            app:thumbTint="@drawable/main_selector"
+            app:thumbTint="@drawable/switch_selector"
             android:paddingTop="16dp"
             android:text="@string/happiness" />
     </LinearLayout>
