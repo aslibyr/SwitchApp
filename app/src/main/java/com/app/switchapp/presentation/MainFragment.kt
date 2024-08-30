@@ -18,6 +18,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by activityViewModels()
     private var bottomBarCount: Int = 0
+    private val maxMenuItems = 4
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,12 +64,12 @@ class MainFragment : Fragment() {
 
             } else {
                 viewModel.setGivingChecked(isChecked)
-                handleBottomNavItem(R.id.giving, isChecked)
+                handleBottomNavItem(R.id.nav_graph_giving, isChecked)
             }
         }
 
         binding.respect.setOnCheckedChangeListener { _, isChecked ->
-            if (bottomBarCount == 4 && isChecked) {
+            if (bottomBarCount == maxMenuItems && isChecked) {
                 binding.respect.isChecked = false
                 Toast.makeText(
                     requireContext(),
@@ -78,12 +79,12 @@ class MainFragment : Fragment() {
 
             } else {
                 viewModel.setRespectChecked(isChecked)
-                handleBottomNavItem(R.id.respect, isChecked)
+                handleBottomNavItem(R.id.nav_graph_respect, isChecked)
             }
         }
 
         binding.kindness.setOnCheckedChangeListener { _, isChecked ->
-            if (bottomBarCount == 4 && isChecked) {
+            if (bottomBarCount == maxMenuItems && isChecked) {
                 binding.kindness.isChecked = false
                 Toast.makeText(
                     requireContext(),
@@ -93,12 +94,12 @@ class MainFragment : Fragment() {
 
             } else {
                 viewModel.setKindnessChecked(isChecked)
-                handleBottomNavItem(R.id.kindness, isChecked)
+                handleBottomNavItem(R.id.nav_graph_kindness, isChecked)
             }
         }
 
         binding.optimism.setOnCheckedChangeListener { _, isChecked ->
-            if (bottomBarCount == 4 && isChecked) {
+            if (bottomBarCount == maxMenuItems && isChecked) {
                 binding.optimism.isChecked = false
                 Toast.makeText(
                     requireContext(),
@@ -108,12 +109,12 @@ class MainFragment : Fragment() {
 
             } else {
                 viewModel.setOptimismChecked(isChecked)
-                handleBottomNavItem(R.id.optimism, isChecked)
+                handleBottomNavItem(R.id.nav_graph_optimism, isChecked)
             }
         }
 
         binding.happiness.setOnCheckedChangeListener { _, isChecked ->
-            if (bottomBarCount == 4 && isChecked) {
+            if (bottomBarCount == maxMenuItems && isChecked) {
                 binding.happiness.isChecked = false
                 Toast.makeText(
                     requireContext(),
@@ -123,7 +124,7 @@ class MainFragment : Fragment() {
 
             } else {
                 viewModel.setHappinessChecked(isChecked)
-                handleBottomNavItem(R.id.happiness, isChecked)
+                handleBottomNavItem(R.id.nav_graph_happiness, isChecked)
             }
         }
 
