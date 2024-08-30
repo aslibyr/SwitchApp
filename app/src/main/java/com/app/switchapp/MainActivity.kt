@@ -2,8 +2,10 @@ package com.app.switchapp
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.app.switchapp.databinding.ActivityMainBinding
 import com.app.switchapp.presentation.HappinessFragment
 import com.app.switchapp.presentation.KindnessFragment
@@ -12,12 +14,16 @@ import com.app.switchapp.presentation.MainViewModel
 import com.app.switchapp.presentation.OptimismFragment
 import com.app.switchapp.presentation.RespectFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels() // ViewModel'ı Activity'e bağlıyoruz
-    private val menuItems = mutableListOf<String>()
+    private val viewModel: MainViewModel by viewModels()
+
+    // Menü öğelerinin id'lerini tutmak için bir liste oluşturun.
+    private val menuItems = mutableListOf<Int>()
+    private val maxMenuItems = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,48 +40,47 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
-
                 R.id.respect -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, RespectFragment())
                         .commit()
                     true
                 }
-
                 R.id.kindness -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, KindnessFragment())
                         .commit()
                     true
                 }
-
                 R.id.optimism -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, OptimismFragment())
                         .commit()
                     true
                 }
-
                 R.id.happiness -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, HappinessFragment())
                         .commit()
                     true
                 }
-
                 else -> false
             }
         }
 
+        // Uygulama açıldığında ana ekranı yükle
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment())
             .commit()
 
-        viewModel.isBottomNavVisible.observe(this) { isVisible ->
-            if (isVisible) {
-                showBottomNavigation()
-            } else {
-                hideBottomNavigation()
+        // Bottom navigation görünürlüğünü gözlemle
+        lifecycleScope.launch {
+            viewModel.uiState.collect { uiState ->
+                if (uiState.isBottomNavVisible) {
+                    showBottomNavigation()
+                } else {
+                    hideBottomNavigation()
+                }
             }
         }
     }
@@ -88,16 +93,19 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.visibility = View.GONE
     }
 
-    fun addItemToBottomNav(title: String) {
-        if (!menuItems.contains(title) && menuItems.size < 4) {
-            menuItems.add(title)
+    fun addItemToBottomNav(itemId: Int) {
+        if (!menuItems.contains(itemId) && menuItems.size < maxMenuItems) {
+            menuItems.add(itemId)
             updateBottomNav()
+        } else if (menuItems.size == maxMenuItems) {
+            Toast.makeText(this, "Maximum number of items reached", Toast.LENGTH_SHORT).show()
+            return
         }
     }
 
-    fun removeItemFromBottomNav(title: String) {
-        if (menuItems.contains(title)) {
-            menuItems.remove(title)
+    fun removeItemFromBottomNav(itemId: Int) {
+        if (menuItems.contains(itemId)) {
+            menuItems.remove(itemId)
             updateBottomNav()
         }
     }
@@ -105,10 +113,25 @@ class MainActivity : AppCompatActivity() {
     private fun updateBottomNav() {
         val menu = binding.bottomNavigationView.menu
         menu.clear()
-        menu.add(0, R.id.home, 0, "Ana Ekran")
+        menu.add(0, R.id.home, 0, "Ana Ekran").setIcon(R.drawable.ic_launcher_foreground)
 
-        menuItems.forEachIndexed { index, item ->
-            menu.add(0, View.generateViewId(), index + 1, item)
+        menuItems.take(maxMenuItems).forEachIndexed { index, itemId ->
+            when (itemId) {
+                R.id.respect -> menu.add(0, R.id.respect, index + 1, "Respect")
+                    .setIcon(R.drawable.abstract_shape)
+
+                R.id.kindness -> menu.add(0, R.id.kindness, index + 1, "Kindness")
+                    .setIcon(R.drawable.abstract_shape3)
+
+                R.id.optimism -> menu.add(0, R.id.optimism, index + 1, "Optimism")
+                    .setIcon(R.drawable.abstract_shape2)
+
+                R.id.happiness -> menu.add(0, R.id.happiness, index + 1, "Happiness")
+                    .setIcon(R.drawable.abstract_shape1)
+
+                R.id.giving -> menu.add(0, R.id.giving, index + 1, "Giving")
+                    .setIcon(R.drawable.teamwork)
+            }
         }
     }
 }

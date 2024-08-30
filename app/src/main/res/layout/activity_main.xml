@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!-- ViewModel Binding if necessary -->
     </data>
 
     <RelativeLayout

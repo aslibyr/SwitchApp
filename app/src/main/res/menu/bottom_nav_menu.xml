@@ -4,7 +4,7 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Home"
+        android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/respect"
@@ -25,6 +25,12 @@
         android:id="@+id/happiness"
         android:icon="@drawable/abstract_shape1"
         android:title="@string/happiness"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/giving"
+        android:icon="@drawable/teamwork"
+        android:title="@string/giving"
         app:showAsAction="ifRoom" />
 
 </menu>
