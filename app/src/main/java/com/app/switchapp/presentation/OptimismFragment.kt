@@ -4,6 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import com.app.switchapp.R
 
@@ -18,9 +30,31 @@ class OptimismFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_optimism, container, false)
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                OptimismScreen()
+            }
+        }
     }
+}
 
+@Composable
+fun OptimismScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color.DarkGray,
+                        Color.Black
+                    )
+                )
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(text = stringResource(R.string.optimism_fragment), color = Color.White)
+    }
 }
