@@ -7,6 +7,7 @@ data class UIState(
     val isKindnessChecked: Boolean = false,
     val isOptimismChecked: Boolean = false,
     val isHappinessChecked: Boolean = false,
-    val isBottomNavVisible: Boolean = false
+    val isBottomNavVisible: Boolean = false,
+    val bottomBarCount: Int = 0
 )
 

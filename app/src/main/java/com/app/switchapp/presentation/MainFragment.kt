@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +17,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by activityViewModels()
-
+    private var bottomBarCount: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +38,7 @@ class MainFragment : Fragment() {
                 binding.kindness.isChecked = uiState.isKindnessChecked
                 binding.optimism.isChecked = uiState.isOptimismChecked
                 binding.happiness.isChecked = uiState.isHappinessChecked
+                bottomBarCount = uiState.bottomBarCount
                 updateSwitchesState(uiState.isEgoChecked)
                 if (uiState.isBottomNavVisible) {
                     (activity as MainActivity).showBottomNavigation()
@@ -51,28 +53,78 @@ class MainFragment : Fragment() {
         }
 
         binding.giving.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setGivingChecked(isChecked)
-            handleBottomNavItem(R.id.giving, isChecked)
+            if (bottomBarCount == 4 && isChecked) {
+                binding.giving.isChecked = false
+                Toast.makeText(
+                    requireContext(),
+                    "Maximum number of items reached",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.setGivingChecked(isChecked)
+                handleBottomNavItem(R.id.giving, isChecked)
+            }
         }
 
         binding.respect.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setRespectChecked(isChecked)
-            handleBottomNavItem(R.id.respect, isChecked)
+            if (bottomBarCount == 4 && isChecked) {
+                binding.respect.isChecked = false
+                Toast.makeText(
+                    requireContext(),
+                    "Maximum number of items reached",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.setRespectChecked(isChecked)
+                handleBottomNavItem(R.id.respect, isChecked)
+            }
         }
 
         binding.kindness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setKindnessChecked(isChecked)
-            handleBottomNavItem(R.id.kindness, isChecked)
+            if (bottomBarCount == 4 && isChecked) {
+                binding.kindness.isChecked = false
+                Toast.makeText(
+                    requireContext(),
+                    "Maximum number of items reached",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.setKindnessChecked(isChecked)
+                handleBottomNavItem(R.id.kindness, isChecked)
+            }
         }
 
         binding.optimism.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setOptimismChecked(isChecked)
-            handleBottomNavItem(R.id.optimism, isChecked)
+            if (bottomBarCount == 4 && isChecked) {
+                binding.optimism.isChecked = false
+                Toast.makeText(
+                    requireContext(),
+                    "Maximum number of items reached",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.setOptimismChecked(isChecked)
+                handleBottomNavItem(R.id.optimism, isChecked)
+            }
         }
 
         binding.happiness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setHappinessChecked(isChecked)
-            handleBottomNavItem(R.id.happiness, isChecked)
+            if (bottomBarCount == 4 && isChecked) {
+                binding.happiness.isChecked = false
+                Toast.makeText(
+                    requireContext(),
+                    "Maximum number of items reached",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.setHappinessChecked(isChecked)
+                handleBottomNavItem(R.id.happiness, isChecked)
+            }
         }
 
     }

@@ -2,11 +2,11 @@ package com.app.switchapp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.app.switchapp.databinding.ActivityMainBinding
+import com.app.switchapp.presentation.GivingFragment
 import com.app.switchapp.presentation.HappinessFragment
 import com.app.switchapp.presentation.KindnessFragment
 import com.app.switchapp.presentation.MainFragment
@@ -64,6 +64,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+                R.id.giving -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, GivingFragment())
+                        .commit()
+                    true
+                }
                 else -> false
             }
         }
@@ -97,9 +103,6 @@ class MainActivity : AppCompatActivity() {
         if (!menuItems.contains(itemId) && menuItems.size < maxMenuItems) {
             menuItems.add(itemId)
             updateBottomNav()
-        } else if (menuItems.size == maxMenuItems) {
-            Toast.makeText(this, "Maximum number of items reached", Toast.LENGTH_SHORT).show()
-            return
         }
     }
 
@@ -114,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         val menu = binding.bottomNavigationView.menu
         menu.clear()
         menu.add(0, R.id.home, 0, "Ana Ekran").setIcon(R.drawable.ic_launcher_foreground)
+        viewModel.updateBottomBarCount(menuItems.size)
 
         menuItems.take(maxMenuItems).forEachIndexed { index, itemId ->
             when (itemId) {

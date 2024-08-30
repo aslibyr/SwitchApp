@@ -15,6 +15,9 @@ class MainViewModel : ViewModel() {
             isBottomNavVisible = !isChecked
         )
     }
+    fun updateBottomBarCount(count: Int) {
+        _uiState.value = _uiState.value.copy(bottomBarCount = count)
+    }
 
     fun setGivingChecked(isChecked: Boolean) {
         _uiState.value = _uiState.value.copy(isGivingChecked = isChecked)
