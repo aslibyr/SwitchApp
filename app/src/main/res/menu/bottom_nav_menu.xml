@@ -6,31 +6,4 @@
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/home"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/respect"
-        android:icon="@drawable/abstract_shape"
-        android:title="@string/respect"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/kindness"
-        android:icon="@drawable/abstract_shape3"
-        android:title="@string/kindness"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/optimism"
-        android:icon="@drawable/abstract_shape2"
-        android:title="@string/optimism"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/happiness"
-        android:icon="@drawable/abstract_shape1"
-        android:title="@string/happiness"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/giving"
-        android:icon="@drawable/teamwork"
-        android:title="@string/giving"
-        app:showAsAction="ifRoom" />
-
 </menu>
