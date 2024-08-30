@@ -1,4 +1,4 @@
-package com.app.switchapp.presentation
+package com.app.switchapp.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.app.switchapp.MainActivity
 import com.app.switchapp.R
 import com.app.switchapp.databinding.FragmentMainBinding
+import com.app.switchapp.presentation.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {

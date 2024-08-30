@@ -1,4 +1,4 @@
-package com.app.switchapp.presentation
+package com.app.switchapp.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import com.app.switchapp.R
 
 
-class GivingFragment : Fragment() {
+class HappinessFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +32,14 @@ class GivingFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                GivingScreen()
+                HappinessScreen()
             }
         }
     }
 }
 
 @Composable
-fun GivingScreen() {
+fun HappinessScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,6 +54,6 @@ fun GivingScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = stringResource(R.string.giving_fragment), color = Color.White)
+        Text(text = stringResource(R.string.happiness_fragment), color = Color.White)
     }
 }

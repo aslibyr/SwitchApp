@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/giving"
-        android:name="com.app.switchapp.presentation.GivingFragment"
+        android:name="com.app.switchapp.presentation.ui.GivingFragment"
         android:label="Giving" />
 
 </navigation>

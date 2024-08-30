@@ -1,4 +1,4 @@
-package com.app.switchapp.presentation
+package com.app.switchapp.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/optimism"
-        android:name="com.app.switchapp.presentation.OptimismFragment"
+        android:name="com.app.switchapp.presentation.ui.OptimismFragment"
         android:label="Optimism" />
 
 </navigation>

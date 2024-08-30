@@ -1,4 +1,4 @@
-package com.app.switchapp.presentation
+package com.app.switchapp.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,8 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import com.app.switchapp.R
 
-
-class OptimismFragment : Fragment() {
+class KindnessFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +32,14 @@ class OptimismFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                OptimismScreen()
+                KindnessScreen()
             }
         }
     }
 }
 
 @Composable
-fun OptimismScreen() {
+fun KindnessScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,6 +54,6 @@ fun OptimismScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = stringResource(R.string.optimism_fragment), color = Color.White)
+        Text(text = stringResource(R.string.kindness_fragment), color = Color.White)
     }
 }

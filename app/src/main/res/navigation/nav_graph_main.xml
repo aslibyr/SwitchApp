@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/main"
-        android:name="com.app.switchapp.presentation.MainFragment"
+        android:name="com.app.switchapp.presentation.ui.MainFragment"
         android:label="Main" />
 
 </navigation>

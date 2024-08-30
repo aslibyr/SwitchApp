@@ -1,4 +1,4 @@
-package com.app.switchapp
+package com.app.switchapp.presentation.ui
 
 import android.os.Bundle
 import android.view.View
@@ -11,8 +11,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.app.switchapp.R
 import com.app.switchapp.databinding.ActivityMainBinding
-import com.app.switchapp.presentation.MainViewModel
+import com.app.switchapp.presentation.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

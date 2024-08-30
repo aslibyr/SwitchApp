@@ -1,4 +1,4 @@
-package com.app.switchapp.presentation
+package com.app.switchapp.presentation.viewmodel
 
 data class UIState(
     val isEgoChecked: Boolean = true,

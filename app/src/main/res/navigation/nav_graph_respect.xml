@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/respect"
-        android:name="com.app.switchapp.presentation.RespectFragment"
+        android:name="com.app.switchapp.presentation.ui.RespectFragment"
         android:label="Respect" />
 
 </navigation>
