@@ -10,11 +10,25 @@ class MainViewModel : ViewModel() {
     val uiState: StateFlow<UIState> = _uiState
 
     fun setEgoChecked(isChecked: Boolean) {
-        _uiState.value = _uiState.value.copy(
-            isEgoChecked = isChecked,
-            isBottomNavVisible = !isChecked
-        )
+        if (isChecked) {
+            _uiState.value = _uiState.value.copy(
+                isEgoChecked = true,
+                isGivingChecked = false,
+                isRespectChecked = false,
+                isKindnessChecked = false,
+                isOptimismChecked = false,
+                isHappinessChecked = false,
+                isBottomNavVisible = false,
+                bottomBarCount = 0
+            )
+        } else {
+            _uiState.value = _uiState.value.copy(
+                isEgoChecked = false,
+                isBottomNavVisible = true
+            )
+        }
     }
+
     fun updateBottomBarCount(count: Int) {
         _uiState.value = _uiState.value.copy(bottomBarCount = count)
     }
